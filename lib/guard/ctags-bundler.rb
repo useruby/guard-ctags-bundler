@@ -20,7 +20,7 @@ module Guard
     end
 
     def run_on_changes(paths)
-      if paths.include?('Gemfile.lock')
+      if paths.include?('Gemfile.lock') && options[:bundler_tags]
         UI.info "regenerating bundler tags..." unless @silent
         @ctags_generator.generate_bundler_tags
       end
