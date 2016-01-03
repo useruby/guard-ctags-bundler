@@ -5,6 +5,8 @@ module Guard
     autoload 'CtagsGenerator', 'guard/ctags-bundler/ctags_generator'
 
     def initialize(options = {})
+      options[:bundler_tags] = options.fetch(:bundler_tags, true)
+      
       super
       @silent = !!options.delete(:silent)
       @ctags_generator = ::Guard::CtagsBundler::CtagsGenerator.new(options)
@@ -12,7 +14,7 @@ module Guard
 
     def start
       UI.info "Guard::CtagsBundler is running#{' (silently)' if @silent}!"
-      @ctags_generator.generate_bundler_tags
+      @ctags_generator.generate_bundler_tags if options[:bundler_tags]
       @ctags_generator.generate_project_tags
       @ctags_generator.generate_stdlib_tags if options[:stdlib]
     end

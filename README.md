@@ -38,6 +38,7 @@ Please, read [Guard usage doc](https://github.com/guard/guard#readme)
 :src_path => ".", # source path to be scanned for tags (default .)
 :emacs => false, # run ctags in emacs mode and merge tags and gems.tags into TAGS file
 :stdlib => true, # run ctags for core and stdlib, generating stdlib.tags (default false)
+:bundler_tags => false, # run ctags for the gems from the Gemfile (default true)
 :binary => 'ctags-exuberant' # name of the ctags binary (default ctags)
 :arguments => '-R --languages=ruby --fields=+l' # change the arguments passed to ctags (default '-R --languages=ruby')
 :stdlib_file => "stdlib.tags" # name of tags file for stdlib references (default stdlib.tags)
